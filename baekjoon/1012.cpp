@@ -1,23 +1,8 @@
+#include <iostream>
 #include <vector>
 #include <queue>
 using namespace std;
 
-//ÆÑÅä¸®¾ó
-int Factorial(int n) {
-	int a = 1;
-	for (int i = 1; i <= n; i++) {
-		a *= i;
-	}
-	return a;
-}
-//ÆÑÅä¸®¾ó 10^20±îÁö
-unsigned long long Factorial(const unsigned long long& n) {
-	unsigned long long a = 1;
-	for (int i = 1; i <= n; i++) {
-		a *= i;
-	}
-	return a;
-}
 int bfs(vector<vector<int>>& vec) {
 	int n = vec.size();
 	int m = vec[0].size();
@@ -54,4 +39,22 @@ int bfs(vector<vector<int>>& vec) {
 		}
 	}
 	return count;
+}
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	int T, N, M, K;
+	cin >> T;
+	while (T--) {
+		cin >> N >> M >> K;
+		vector<vector<int>> Vector(N, vector<int>(M, 0));
+		for (int i = 0; i < K; i++) {
+			int x, y;
+			cin >> x >> y;
+			Vector[x][y]++;
+		}
+		cout << dfs(Vector) << endl;
+	}
 }
